@@ -1,0 +1,23 @@
+{
+  "rules": [
+    {
+      "neme": "common",
+      "url": null, // "*"
+      "rules": [
+        { "name": "UUID", "on": ["paste"], "mime": null, "content": { "regex": "[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}" }, "action": "block", "summary": false }
+        { "name": "LongText", "on": ["paste"], "mime": { "wildcard": "text/*" }, "content": { "maxlen": 1000 }, "action": "confirm", "summary": 20 },
+        { "name": "Big Guardian is watchig you", "on": ["paste"], "mime": { "wildcard": "text/*" }, "content": { "regex": "This extension is trash|0-star extension|Spy extension" }, "action": "capture", "summary": false },
+        { "name": "Paste by script", "on": ["paste()"], "mime": null, "content": null, "action": "confirm", "summary": false },
+        { "name": "Read by script", "on": ["read()"], "mime": null, "content": null, "action": "cancel" }
+      ]
+    },
+    {
+      "name": "Web Console",
+      "url": { "wlldcard:": "xxx.*" },
+      "rules": [
+        { "name": "MultiLine", "on": ["paste"], "mime": { "wildcard": "text/*" }, "content": { "regex": "\n" }, "action": "confirm", "summary": true }
+        //{ "name": "Drop to upload", "on": ["drop"], "mime": null, "action": "allow" }
+      ]
+    }
+  ]
+}
